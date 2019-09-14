@@ -10,6 +10,6 @@ interface MainView : MvpView {
     fun openSignIn()
 
     @StateStrategyType(OneExecutionStateStrategy::class)
-    fun openAccount()
+    fun openStartScreen()
 
 }

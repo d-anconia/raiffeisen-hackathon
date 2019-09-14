@@ -22,8 +22,6 @@ class AccountPresenter @Inject constructor(
             .observeOn(schedulerProvider.ui())
             .subscribe(::onSuccess)
 
-        val 
-
         compositeDisposable.add(transactionDisposable)
     }
 

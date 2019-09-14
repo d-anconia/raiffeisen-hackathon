@@ -1,14 +1,13 @@
 package com.github.ivanshafran.raif.ui.main
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.github.ivanshafran.raif.R
 import com.github.ivanshafran.raif.di.Scopes
-import com.github.ivanshafran.raif.ui.account.AccountFragment
 import com.github.ivanshafran.raif.ui.signin.SignInFragment
+import com.github.ivanshafran.raif.ui.start_stub.StartStubFragment
 import toothpick.Toothpick
 
 class MainActivity : MvpAppCompatActivity(), MainView {
@@ -36,10 +35,10 @@ class MainActivity : MvpAppCompatActivity(), MainView {
             .commit()
     }
 
-    override fun openAccount() {
+    override fun openStartScreen() {
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.container, AccountFragment.newInstance())
+            .replace(R.id.container, StartStubFragment.newInstance())
             .addToBackStack(null)
             .commit()
     }

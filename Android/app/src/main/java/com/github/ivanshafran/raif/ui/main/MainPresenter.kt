@@ -14,7 +14,7 @@ class MainPresenter @Inject constructor(
         if (userInfoRepository.getUserId() == null) {
             viewState.openSignIn()
         } else {
-            viewState.openAccount()
+            viewState.openStartScreen()
         }
     }
 
