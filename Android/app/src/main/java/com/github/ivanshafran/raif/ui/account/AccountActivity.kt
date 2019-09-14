@@ -62,6 +62,7 @@ class AccountActivity : MvpAppCompatActivity(), AccountView {
 
     override fun showAccount(account: Account) {
         cardNameTextView.text = account.cardName
-        balanceTextView.text = account.balance.toString()
+        val balance = getString(R.string.rub, account.balance.toString())
+        balanceTextView.text = balance
     }
 }

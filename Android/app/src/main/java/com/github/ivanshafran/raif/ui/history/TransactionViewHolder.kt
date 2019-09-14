@@ -39,7 +39,7 @@ class TransactionInfoViewHolder(view: View) : TransactionViewHolder(view) {
         val context = fromNameTextView.context
         fromNameTextView.text = transaction.name
         volumeTextView.text = context.getString(
-            R.string.rub,
+            R.string.transaction_rub,
             transaction.volume.toString()
         )
         dateTextView.text = transaction.date
