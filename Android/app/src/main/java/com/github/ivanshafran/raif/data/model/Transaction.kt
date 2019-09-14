@@ -11,5 +11,9 @@ class Transaction(
     @SerializedName("accountTo")
     val accountTo: Long,
     @SerializedName("volume")
-    val volume: BigDecimal
+    val volume: BigDecimal,
+    @SerializedName("iscash")
+    val isCash: Boolean,
+    @SerializedName("date")
+    val date: Long
 )

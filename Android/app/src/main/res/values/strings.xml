@@ -6,4 +6,6 @@
     <string name="info_tab">Инфо</string>
     <string name="history_tab">История</string>
     <string name="tax_tab">Налоги и переводы</string>
+    <string name="create_receipt">Новая продажа за наличку</string>
+    <string name="rub">+%1$sруб</string>
 </resources>

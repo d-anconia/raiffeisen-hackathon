@@ -10,7 +10,6 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.github.ivanshafran.raif.R
-import com.github.ivanshafran.raif.data.model.Transaction
 import com.github.ivanshafran.raif.di.Scopes
 import kotlinx.android.synthetic.main.fragment_history.*
 import toothpick.Toothpick
@@ -45,12 +44,16 @@ class HistoryFragment : MvpAppCompatFragment(), HistoryView {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapter = TransactionAdapter()
+        adapter = TransactionAdapter(object : AddReceiptViewHolder.Listener {
+            override fun onClick() {
+                presenter.onAddReceiptClick()
+            }
+        })
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    override fun showTranscations(transcations: List<Transaction>) {
+    override fun showTranscations(transcations: List<TransactionViewModel>) {
         adapter.setTranscations(transcations)
     }
 
