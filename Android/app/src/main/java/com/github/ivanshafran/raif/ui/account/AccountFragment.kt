@@ -12,7 +12,7 @@ import com.github.ivanshafran.raif.R
 import com.github.ivanshafran.raif.data.model.Account
 import com.github.ivanshafran.raif.di.Scopes
 import com.github.ivanshafran.raif.ui.history.HistoryFragment
-import kotlinx.android.synthetic.main.activity_account.*
+import kotlinx.android.synthetic.main.fragment_account.*
 import toothpick.Toothpick
 
 class AccountFragment : MvpAppCompatFragment(), AccountView {
@@ -38,7 +38,7 @@ class AccountFragment : MvpAppCompatFragment(), AccountView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.activity_account, container, false)
+        return inflater.inflate(R.layout.fragment_account, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
