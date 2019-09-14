@@ -6,7 +6,7 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import toothpick.config.Module
 
-class DiModule : Module() {
+class DataModule : Module() {
 
     init {
         val retrofit = createRetrofit()
