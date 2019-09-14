@@ -22,6 +22,7 @@ class SignInPresenter @Inject constructor(
             .signIn(signInArgs)
             .observeOn(schedulerProvider.ui())
             .subscribe(::onComplete, ::onError)
+        compositeDisposable.add(disposable)
     }
 
     private fun onComplete() {

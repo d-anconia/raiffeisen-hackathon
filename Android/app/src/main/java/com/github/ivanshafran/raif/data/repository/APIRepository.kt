@@ -7,7 +7,7 @@ import retrofit2.http.Query
 
 interface APIRepository {
 
-    @GET("login")
+    @GET("/login")
     fun signIn(
         @Query("username") username: String,
         @Query("password") password: String
