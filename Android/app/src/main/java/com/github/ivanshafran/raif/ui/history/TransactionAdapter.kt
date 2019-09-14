@@ -1,4 +1,4 @@
-package com.github.ivanshafran.raif.ui.account
+package com.github.ivanshafran.raif.ui.history
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

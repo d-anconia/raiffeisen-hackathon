@@ -1,4 +1,4 @@
-package com.github.ivanshafran.raif.ui.account
+package com.github.ivanshafran.raif.ui.history
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,27 +12,27 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.github.ivanshafran.raif.R
 import com.github.ivanshafran.raif.data.model.Transaction
 import com.github.ivanshafran.raif.di.Scopes
-import kotlinx.android.synthetic.main.fragment_account.*
+import kotlinx.android.synthetic.main.fragment_history.*
 import toothpick.Toothpick
 
-class AccountFragment : MvpAppCompatFragment(), AccountView {
+class HistoryFragment : MvpAppCompatFragment(), HistoryView {
 
     companion object {
         fun newInstance(): Fragment {
-            return AccountFragment()
+            return HistoryFragment()
         }
     }
 
     @InjectPresenter
-    lateinit var presenter: AccountPresenter
+    lateinit var presenter: HistoryPresenter
 
     private lateinit var adapter: TransactionAdapter
 
     @ProvidePresenter
-    fun providePresenter(): AccountPresenter {
+    fun providePresenter(): HistoryPresenter {
         return Toothpick
             .openScope(Scopes.GLOBAL_SCOPE)
-            .getInstance(AccountPresenter::class.java)
+            .getInstance(HistoryPresenter::class.java)
     }
 
     override fun onCreateView(
@@ -40,7 +40,7 @@ class AccountFragment : MvpAppCompatFragment(), AccountView {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_account, container, false)
+        return inflater.inflate(R.layout.fragment_history, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -53,4 +53,5 @@ class AccountFragment : MvpAppCompatFragment(), AccountView {
     override fun showTranscations(transcations: List<Transaction>) {
         adapter.setTranscations(transcations)
     }
+
 }

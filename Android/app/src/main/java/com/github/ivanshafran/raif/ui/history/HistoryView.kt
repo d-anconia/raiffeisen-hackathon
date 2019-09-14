@@ -1,18 +1,13 @@
-package com.github.ivanshafran.raif.ui.account
+package com.github.ivanshafran.raif.ui.history
 
 import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
+import com.github.ivanshafran.raif.data.model.Transaction
 
-interface AccountView : MvpView {
-
-    enum class Screen {
-        INFO,
-        HISTORY,
-        TAX
-    }
+interface HistoryView : MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
-    fun showScreen(screen: Screen)
+    fun showTranscations(transcations: List<Transaction>)
 
 }
