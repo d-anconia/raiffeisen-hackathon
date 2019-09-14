@@ -38,15 +38,33 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp" />
 
-            <TextView
-                android:id="@+id/fromNameTextView"
+            <LinearLayout
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="68dp"
-                android:textColor="@android:color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="68dp"
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_weight="5"
+                    android:id="@+id/fromNameTextView"
+                    android:gravity="start|bottom"
+                    android:textColor="@android:color/black"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp" />
+
+                <TextView
+                    android:layout_weight="4"
+                    android:textSize="12sp"
+                    android:gravity="start|top"
+                    android:id="@+id/moneyTypeTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp" />
+
+            </LinearLayout>
+
 
             <TextView
                 android:id="@+id/volumeTextView"

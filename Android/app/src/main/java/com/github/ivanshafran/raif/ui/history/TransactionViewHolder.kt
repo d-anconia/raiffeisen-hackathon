@@ -34,6 +34,7 @@ class TransactionInfoViewHolder(view: View) : TransactionViewHolder(view) {
     private val dateTextView = view.findViewById<TextView>(R.id.dateTextView)
     private val volumeTextView = view.findViewById<TextView>(R.id.volumeTextView)
     private val typeImageView = view.findViewById<ImageView>(R.id.typeIcon)
+    private val typeTextView = view.findViewById<TextView>(R.id.moneyTypeTextView)
 
     fun bind(transaction: TransactionInfo) {
         val context = fromNameTextView.context
@@ -48,6 +49,13 @@ class TransactionInfoViewHolder(view: View) : TransactionViewHolder(view) {
                 R.drawable.ic_cash
             } else {
                 R.drawable.ic_online
+            }
+        )
+        typeTextView.text = context.getString(
+            if (transaction.isCash) {
+                R.string.cash_money
+            } else {
+                R.string.online_money
             }
         )
     }

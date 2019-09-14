@@ -18,4 +18,7 @@
     <string name="first_card">Первая карта</string>
     <string name="second_card">Вторая карта</string>
     <string name="third_card">Третья карта</string>
+
+    <string name="online_money">Входящий перевод</string>
+    <string name="cash_money">Наличный расчёт</string>
 </resources>
