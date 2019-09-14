@@ -32,4 +32,8 @@ class AccountListPresenter @Inject constructor(
         compositeDisposable.dispose()
     }
 
+    fun onCardClick() {
+        viewState.openAccountScreen()
+    }
+
 }

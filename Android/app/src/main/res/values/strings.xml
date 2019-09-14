@@ -12,4 +12,10 @@
     <string name="cb_exchange">Курсы валют ЦБ</string>
     <string name="usd_exchange">Доллар %1$s</string>
     <string name="euro_exchange">Евро %1$s</string>
+    <string name="cards">Карты</string>
+    <string name="cards_tax">Карты с налогообложением</string>
+
+    <string name="first_card">Первая карта</string>
+    <string name="second_card">Вторая карта</string>
+    <string name="third_card">Третья карта</string>
 </resources>
