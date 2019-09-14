@@ -7,10 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
+import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.github.ivanshafran.raif.R
-import com.github.ivanshafran.raif.data.model.SignInData
+import com.github.ivanshafran.raif.data.model.SignInArgs
+import com.github.ivanshafran.raif.di.Scopes
 import com.github.ivanshafran.raif.ui.setVisible
+import com.github.ivanshafran.raif.ui.start_stub.StartStubFragment
 import kotlinx.android.synthetic.main.fragment_sign_in.*
+import toothpick.Toothpick
 
 class SignInFragment : MvpAppCompatFragment(), SignInView {
 
@@ -22,6 +26,13 @@ class SignInFragment : MvpAppCompatFragment(), SignInView {
 
     @InjectPresenter
     lateinit var presenter: SignInPresenter
+
+    @ProvidePresenter
+    fun providePresenter(): SignInPresenter {
+        return Toothpick
+            .openScope(Scopes.GLOBAL_SCOPE)
+            .getInstance(SignInPresenter::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,8 +49,8 @@ class SignInFragment : MvpAppCompatFragment(), SignInView {
         }
     }
 
-    private fun createSignInData(): SignInData {
-        return SignInData(
+    private fun createSignInData(): SignInArgs {
+        return SignInArgs(
             loginEditText.text.toString(),
             passwordEditText.text.toString()
         )
@@ -47,6 +58,21 @@ class SignInFragment : MvpAppCompatFragment(), SignInView {
 
     override fun showProgressBar(shouldShow: Boolean) {
         progressBarView.setVisible(shouldShow)
+        loginButton.isEnabled = !shouldShow
+        loginEditText.isEnabled = !shouldShow
+        passwordEditText.isEnabled = !shouldShow
+    }
+
+    override fun openStartScreen() {
+        requireFragmentManager()
+            .beginTransaction()
+            .remove(this)
+            .commit()
+
+        requireFragmentManager()
+            .beginTransaction()
+            .replace(R.id.container, StartStubFragment.newInstance())
+            .commit()
     }
 
     override fun showError() {
