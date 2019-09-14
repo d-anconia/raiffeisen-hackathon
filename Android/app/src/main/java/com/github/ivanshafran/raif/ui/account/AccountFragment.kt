@@ -1,10 +1,11 @@
 package com.github.ivanshafran.raif.ui.account
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.arellomobile.mvp.MvpAppCompatActivity
+import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.github.ivanshafran.raif.R
@@ -14,11 +15,11 @@ import com.github.ivanshafran.raif.ui.history.HistoryFragment
 import kotlinx.android.synthetic.main.activity_account.*
 import toothpick.Toothpick
 
-class AccountActivity : MvpAppCompatActivity(), AccountView {
+class AccountFragment : MvpAppCompatFragment(), AccountView {
 
     companion object {
-        fun getIntent(context: Context): Intent {
-            return Intent(context, AccountActivity::class.java)
+        fun newInstance(): Fragment {
+            return AccountFragment()
         }
     }
 
@@ -32,10 +33,19 @@ class AccountActivity : MvpAppCompatActivity(), AccountView {
             .getInstance(AccountPresenter::class.java)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_account)
-        backArrowButton.setOnClickListener { finish() }
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.activity_account, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        backArrowButton.setOnClickListener {
+            requireFragmentManager().popBackStack()
+        }
     }
 
     override fun showScreen(screen: AccountView.Screen) {
@@ -54,7 +64,7 @@ class AccountActivity : MvpAppCompatActivity(), AccountView {
     }
 
     private fun showFragment(fragment: Fragment) {
-        supportFragmentManager
+        requireFragmentManager()
             .beginTransaction()
             .replace(R.id.accountContainer, fragment)
             .commit()

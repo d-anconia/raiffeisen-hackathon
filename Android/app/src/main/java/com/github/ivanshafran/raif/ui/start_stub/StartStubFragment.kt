@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.github.ivanshafran.raif.R
-import com.github.ivanshafran.raif.ui.account.AccountActivity
+import com.github.ivanshafran.raif.ui.account.AccountFragment
 import kotlinx.android.synthetic.main.fragment_start_screen.*
 
 class StartStubFragment : Fragment() {
@@ -33,7 +33,11 @@ class StartStubFragment : Fragment() {
     }
 
     private fun openAccountScreen() {
-        startActivity(AccountActivity.getIntent(requireContext()))
+        requireFragmentManager()
+            .beginTransaction()
+            .replace(R.id.container, AccountFragment.newInstance())
+            .addToBackStack(null)
+            .commit()
     }
 
 }
