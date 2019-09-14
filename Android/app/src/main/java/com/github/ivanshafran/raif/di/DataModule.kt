@@ -1,6 +1,7 @@
 package com.github.ivanshafran.raif.di
 
 import com.github.ivanshafran.raif.data.repository.APIRepository
+import com.github.ivanshafran.raif.data.repository.TestAPIRepository
 import com.github.ivanshafran.raif.data.repository.UserInfoRepository
 import com.github.ivanshafran.raif.data.repository.UserInfoRepositoryImpl
 import io.reactivex.schedulers.Schedulers
@@ -15,7 +16,7 @@ class DataModule : Module() {
         val retrofit = createRetrofit()
         val apiRepository: APIRepository = retrofit.create(APIRepository::class.java)
         bind(APIRepository::class.java)
-            .toInstance(apiRepository)
+            .toInstance(TestAPIRepository())
         bind(UserInfoRepository::class.java)
             .to(UserInfoRepositoryImpl::class.java)
             .singletonInScope()
