@@ -18,5 +18,6 @@ public class Transaction {
     private BigDecimal volume;
     private String fromName;
     private Long date;
+    private boolean iscash;
 
 }

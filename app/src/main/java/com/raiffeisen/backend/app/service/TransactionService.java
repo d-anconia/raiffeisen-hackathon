@@ -6,8 +6,10 @@ import com.raiffeisen.backend.app.repository.UserRepository;
 import com.raiffeisen.backend.app.repository.model.Account;
 import com.raiffeisen.backend.app.repository.model.Transaction;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -35,6 +37,21 @@ public class TransactionService {
         return allTransactions.stream()
                 .peek(transaction -> transaction.setFromName(userRepository.getFullNameByUserId(userId)))
                 .collect(Collectors.toList());
+    }
+
+    @Transactional
+    public void saveTransaction(Transaction transaction) {
+
+        try {
+            transactionRepository.saveTransaction(transaction);
+        } catch (Exception e) {
+            log.error(ExceptionUtils.getStackTrace(e));
+        }
+    }
+
+    @Transactional
+    public void countTax(){
+
     }
 
 }
