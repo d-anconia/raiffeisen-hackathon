@@ -53,6 +53,11 @@ class HistoryFragment : MvpAppCompatFragment(), HistoryView {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
+    override fun onResume() {
+        super.onResume()
+        presenter.onResume()
+    }
+
     override fun showTranscations(transcations: List<TransactionViewModel>) {
         adapter.setTranscations(transcations)
     }

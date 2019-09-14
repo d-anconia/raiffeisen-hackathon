@@ -5,7 +5,7 @@ import com.arellomobile.mvp.MvpPresenter
 import com.github.ivanshafran.raif.data.model.Transaction
 import com.github.ivanshafran.raif.interactor.TranscationInteractor
 import com.github.ivanshafran.raif.rxjava.SchedulerProvider
-import io.reactivex.disposables.Disposable
+import io.reactivex.disposables.CompositeDisposable
 import java.text.SimpleDateFormat
 import java.util.*
 import javax.inject.Inject
@@ -16,13 +16,14 @@ class HistoryPresenter @Inject constructor(
     private val schedulerProvider: SchedulerProvider
 ) : MvpPresenter<HistoryView>() {
 
-    private var disposable: Disposable? = null
+    private var compositeDisposable = CompositeDisposable()
 
-    override fun onFirstViewAttach() {
-        disposable = transcationInteractor
+    fun onResume() {
+        val disposable = transcationInteractor
             .getTransactions()
             .observeOn(schedulerProvider.ui())
             .subscribe(::onSuccess)
+        compositeDisposable.add(disposable)
     }
 
     private fun onSuccess(transactions: List<Transaction>) {
@@ -54,7 +55,7 @@ class HistoryPresenter @Inject constructor(
     }
 
     override fun onDestroy() {
-        disposable?.dispose()
+        compositeDisposable?.dispose()
     }
 
 }
