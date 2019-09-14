@@ -13,10 +13,10 @@ import toothpick.config.Module
 class DataModule : Module() {
 
     init {
-//        val retrofit = createRetrofit()
-//        val apiRepository: APIRepository = retrofit.create(APIRepository::class.java)
+        val retrofit = createRetrofit()
+        val apiRepository: APIRepository = retrofit.create(APIRepository::class.java)
         bind(APIRepository::class.java)
-            .toInstance(TestAPIRepository())
+            .toInstance(apiRepository)
         bind(UserInfoRepository::class.java)
             .to(UserInfoRepositoryImpl::class.java)
             .singletonInScope()

@@ -20,7 +20,7 @@ interface APIRepository {
         @Query("user_id") userId: String
     ): Single<List<Transaction>>
 
-    @GET("/balance")
-    fun getBalance(@Query("user_id") userId: String): Single<BigDecimal>
+//    @GET("/balance")
+//    fun getBalance(@Query("user_id") userId: String): Single<BigDecimal>
 
 }

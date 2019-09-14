@@ -26,7 +26,7 @@ class SignInPresenter @Inject constructor(
     }
 
     private fun onComplete() {
-
+        viewState.openStartScreen()
     }
 
     private fun onError(throwable: Throwable) {

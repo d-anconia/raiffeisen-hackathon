@@ -12,7 +12,7 @@ class TransactionViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     private val volumeTextView = view.findViewById<TextView>(R.id.volumeTextView)
 
     fun bind(transaction: Transaction) {
-        fromNameTextView.text = transaction.nameFrom
+        fromNameTextView.text = transaction.fromName
         volumeTextView.text = transaction.volume.toString()
     }
 

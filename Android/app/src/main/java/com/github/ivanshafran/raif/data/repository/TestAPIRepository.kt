@@ -33,7 +33,7 @@ class TestAPIRepository : APIRepository {
         )
     }
 
-    override fun getBalance(userId: String): Single<BigDecimal> {
-        return Single.just(BigDecimal(1331))
-    }
+//    override fun getBalance(userId: String): Single<BigDecimal> {
+//        return Single.just(BigDecimal(1331))
+//    }
 }

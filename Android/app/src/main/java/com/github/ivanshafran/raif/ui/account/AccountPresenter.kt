@@ -12,7 +12,7 @@ import javax.inject.Inject
 class AccountPresenter @Inject constructor(
     private val transactionInteractor: TranscationInteractor,
     private val schedulerProvider: SchedulerProvider
-): MvpPresenter<AccountView>() {
+) : MvpPresenter<AccountView>() {
 
     private val compositeDisposable = CompositeDisposable()
 
@@ -20,13 +20,17 @@ class AccountPresenter @Inject constructor(
         val transactionDisposable = transactionInteractor
             .getTransactions()
             .observeOn(schedulerProvider.ui())
-            .subscribe(::onSuccess)
+            .subscribe(::onSuccess, ::onError)
 
         compositeDisposable.add(transactionDisposable)
     }
 
     private fun onSuccess(transactions: List<Transaction>) {
         viewState.showTranscations(transactions)
+    }
+
+    private fun onError(throwable: Throwable) {
+        val t = 0
     }
 
     override fun onDestroy() {

@@ -12,6 +12,7 @@ import com.github.ivanshafran.raif.R
 import com.github.ivanshafran.raif.data.model.SignInArgs
 import com.github.ivanshafran.raif.di.Scopes
 import com.github.ivanshafran.raif.ui.setVisible
+import com.github.ivanshafran.raif.ui.start_stub.StartStubFragment
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 import toothpick.Toothpick
 
@@ -60,6 +61,18 @@ class SignInFragment : MvpAppCompatFragment(), SignInView {
         loginButton.isEnabled = !shouldShow
         loginEditText.isEnabled = !shouldShow
         passwordEditText.isEnabled = !shouldShow
+    }
+
+    override fun openStartScreen() {
+        requireFragmentManager()
+            .beginTransaction()
+            .remove(this)
+            .commit()
+
+        requireFragmentManager()
+            .beginTransaction()
+            .replace(R.id.container, StartStubFragment.newInstance())
+            .commit()
     }
 
     override fun showError() {
