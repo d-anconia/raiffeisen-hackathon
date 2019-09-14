@@ -8,6 +8,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.github.ivanshafran.raif.R
+import com.github.ivanshafran.raif.data.model.Account
 import com.github.ivanshafran.raif.di.Scopes
 import com.github.ivanshafran.raif.ui.history.HistoryFragment
 import kotlinx.android.synthetic.main.activity_account.*
@@ -34,6 +35,7 @@ class AccountActivity : MvpAppCompatActivity(), AccountView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_account)
+        backArrowButton.setOnClickListener { finish() }
     }
 
     override fun showScreen(screen: AccountView.Screen) {
@@ -56,5 +58,10 @@ class AccountActivity : MvpAppCompatActivity(), AccountView {
             .beginTransaction()
             .replace(R.id.accountContainer, fragment)
             .commit()
+    }
+
+    override fun showAccount(account: Account) {
+        cardNameTextView.text = account.cardName
+        balanceTextView.text = account.balance.toString()
     }
 }

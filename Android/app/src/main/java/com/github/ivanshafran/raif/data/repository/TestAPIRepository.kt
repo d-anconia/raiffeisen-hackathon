@@ -1,5 +1,6 @@
 package com.github.ivanshafran.raif.data.repository
 
+import com.github.ivanshafran.raif.data.model.Account
 import com.github.ivanshafran.raif.data.model.SignInResult
 import com.github.ivanshafran.raif.data.model.Transaction
 import io.reactivex.Single
@@ -33,7 +34,7 @@ class TestAPIRepository : APIRepository {
         )
     }
 
-//    override fun getBalance(userId: String): Single<BigDecimal> {
-//        return Single.just(BigDecimal(1331))
-//    }
+    override fun getAccount(userId: String): Single<Account> {
+        return Single.error(IllegalStateException())
+    }
 }
