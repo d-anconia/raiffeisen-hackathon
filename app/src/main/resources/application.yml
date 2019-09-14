@@ -1,0 +1,28 @@
+#database:
+#  hikari:
+#    minimumIdle: 3
+#    maximum-pool-size: 15
+#    auto-commit: false
+#    username: "sa"
+#    password: "password"
+#    driver-class-name: org.h2.Driver
+#    #jdbc-url: jdbc:h2:mem:testdb
+#    jdbc-url: jdbc:h2:file:C:\Users\Danil\IdeaProjects\raiffeisen-hackathon\app
+
+
+
+#spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.PostgreSQLDialect
+#spring.jpa.hibernate.ddl-auto=none
+#spring.jpa.hibernate.show-sql=true
+#spring.datasource.url=jdbc:postgresql://localhost:5432/postgres
+#spring.datasource.username=postgres
+#spring.datasource.password=admin
+
+
+
+create table user{
+ id INT GENERATED ALWAYS AS IDENTITY,
+ usernamer varchar(256) not null,
+ password varchar(256) not null
+primary key(id)
+}
