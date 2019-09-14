@@ -13,6 +13,7 @@ import com.github.ivanshafran.raif.data.model.Account
 import com.github.ivanshafran.raif.di.Scopes
 import com.github.ivanshafran.raif.ui.history.HistoryFragment
 import com.github.ivanshafran.raif.ui.info.InfoFragment
+import com.github.ivanshafran.raif.ui.tax.TaxFragment
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_account.*
 import toothpick.Toothpick
@@ -73,6 +74,7 @@ class AccountFragment : MvpAppCompatFragment(), AccountView {
             }
             AccountView.Screen.TAX -> {
                 tabLayout.getTabAt(2)?.select()
+                showFragment(TaxFragment.newInstance())
             }
         }
     }
