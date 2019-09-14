@@ -6,8 +6,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.github.ivanshafran.raif.R
 import com.github.ivanshafran.raif.di.Scopes
+import com.github.ivanshafran.raif.ui.account_list.AccountListFragment
 import com.github.ivanshafran.raif.ui.signin.SignInFragment
-import com.github.ivanshafran.raif.ui.start_stub.StartStubFragment
 import toothpick.Toothpick
 
 class MainActivity : MvpAppCompatActivity(), MainView {
@@ -38,7 +38,7 @@ class MainActivity : MvpAppCompatActivity(), MainView {
     override fun openStartScreen() {
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.container, StartStubFragment.newInstance())
+            .replace(R.id.container, AccountListFragment.newInstance())
             .addToBackStack(null)
             .commit()
     }

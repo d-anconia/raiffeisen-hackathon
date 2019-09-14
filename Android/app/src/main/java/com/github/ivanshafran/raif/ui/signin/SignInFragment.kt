@@ -11,8 +11,8 @@ import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.github.ivanshafran.raif.R
 import com.github.ivanshafran.raif.data.model.SignInArgs
 import com.github.ivanshafran.raif.di.Scopes
+import com.github.ivanshafran.raif.ui.account_list.AccountListFragment
 import com.github.ivanshafran.raif.ui.setVisible
-import com.github.ivanshafran.raif.ui.start_stub.StartStubFragment
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 import toothpick.Toothpick
 
@@ -71,7 +71,7 @@ class SignInFragment : MvpAppCompatFragment(), SignInView {
 
         requireFragmentManager()
             .beginTransaction()
-            .replace(R.id.container, StartStubFragment.newInstance())
+            .replace(R.id.container, AccountListFragment.newInstance())
             .commit()
     }
 
