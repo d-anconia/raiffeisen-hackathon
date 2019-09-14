@@ -12,6 +12,8 @@ import com.github.ivanshafran.raif.R
 import com.github.ivanshafran.raif.data.model.Account
 import com.github.ivanshafran.raif.di.Scopes
 import com.github.ivanshafran.raif.ui.history.HistoryFragment
+import com.github.ivanshafran.raif.ui.info.InfoFragment
+import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.fragment_account.*
 import toothpick.Toothpick
 
@@ -46,12 +48,24 @@ class AccountFragment : MvpAppCompatFragment(), AccountView {
         backArrowButton.setOnClickListener {
             requireFragmentManager().popBackStack()
         }
+        tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
+            override fun onTabReselected(tab: TabLayout.Tab) {
+            }
+
+            override fun onTabUnselected(tab: TabLayout.Tab) {
+            }
+
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                presenter.onTabSelected(tab.position)
+            }
+        })
     }
 
     override fun showScreen(screen: AccountView.Screen) {
         when (screen) {
             AccountView.Screen.INFO -> {
                 tabLayout.getTabAt(0)?.select()
+                showFragment(InfoFragment.newInstance())
             }
             AccountView.Screen.HISTORY -> {
                 tabLayout.getTabAt(1)?.select()

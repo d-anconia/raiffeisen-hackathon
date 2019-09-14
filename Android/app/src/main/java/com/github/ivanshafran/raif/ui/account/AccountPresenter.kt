@@ -33,4 +33,8 @@ class AccountPresenter @Inject constructor(
         disposable?.dispose()
     }
 
+    fun onTabSelected(position: Int) {
+        viewState.showScreen(AccountView.Screen.values()[position])
+    }
+
 }
