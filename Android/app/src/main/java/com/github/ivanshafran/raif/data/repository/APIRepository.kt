@@ -23,4 +23,10 @@ interface APIRepository {
     @GET("/account")
     fun getAccount(@Query("user_id") userId: String): Single<Account>
 
+    @GET("/transaction")
+    fun getTransactionsByPeriod(
+        @Query("from") from: Long,
+        @Query("to") to: Long
+    ): Single<List<Transaction>>
+
 }

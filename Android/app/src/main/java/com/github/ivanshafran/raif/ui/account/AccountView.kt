@@ -4,6 +4,7 @@ import com.arellomobile.mvp.MvpView
 import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
 import com.github.ivanshafran.raif.data.model.Account
+import com.github.ivanshafran.raif.data.model.RevenueInfo
 
 interface AccountView : MvpView {
 
@@ -18,5 +19,8 @@ interface AccountView : MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy::class)
     fun showAccount(account: Account)
+
+    @StateStrategyType(AddToEndSingleStrategy::class)
+    fun showRevenue(revenue: RevenueInfo)
 
 }

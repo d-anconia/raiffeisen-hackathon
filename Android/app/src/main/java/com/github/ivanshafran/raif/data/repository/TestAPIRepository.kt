@@ -38,4 +38,27 @@ class TestAPIRepository : APIRepository {
     override fun getAccount(userId: String): Single<Account> {
         return Single.just(Account(balance = BigDecimal(13), cardName = "Wassa"))
     }
+
+    override fun getTransactionsByPeriod(from: Long, to: Long): Single<List<Transaction>> {
+        return Single.just(
+            listOf(
+                Transaction(
+                    accountFrom = 0,
+                    accountTo = 0,
+                    isCash = false,
+                    date = 2621876712,
+                    volume = BigDecimal(3),
+                    fromName = "Wow"
+                ),
+                Transaction(
+                    accountFrom = 0,
+                    accountTo = 0,
+                    isCash = true,
+                    date = 26218721312,
+                    volume = BigDecimal(6),
+                    fromName = "Wsds"
+                )
+            )
+        )
+    }
 }

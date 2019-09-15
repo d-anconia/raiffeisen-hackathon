@@ -10,6 +10,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.github.ivanshafran.raif.R
 import com.github.ivanshafran.raif.data.model.Account
+import com.github.ivanshafran.raif.data.model.RevenueInfo
 import com.github.ivanshafran.raif.di.Scopes
 import com.github.ivanshafran.raif.ui.history.HistoryFragment
 import com.github.ivanshafran.raif.ui.info.InfoFragment
@@ -90,5 +91,15 @@ class AccountFragment : MvpAppCompatFragment(), AccountView {
         cardNameTextView.text = account.cardName
         val balance = getString(R.string.rub, account.balance.toString())
         balanceTextView.text = balance
+    }
+
+    override fun showRevenue(revenue: RevenueInfo) {
+        monthMoneyValue.text = requireContext().getString(R.string.rub, revenue.monthValue)
+        monthMoneyTextView.text =
+            requireContext().getString(R.string.month_money, revenue.monthName)
+        yearMoneyRange.text =
+            requireContext().getString(R.string.year_money_description, revenue.yearToDate)
+        yearMoneyValue.text = requireContext().getString(R.string.rub, revenue.yearValue)
+        taxValue.text = requireContext().getString(R.string.tax_draft, revenue.taxValue)
     }
 }

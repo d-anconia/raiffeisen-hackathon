@@ -27,4 +27,10 @@
     <string name="name_hint">Покупатель</string>
     <string name="job_hint">Услуга</string>
     <string name="create_button">Создать</string>
+
+    <string name="month_money">Выручка за %1$s</string>
+    <string name="month_money_description">Наличный + безналичный расчёт</string>
+    <string name="year_money">Выручка за год</string>
+    <string name="year_money_description">До %1$s</string>
+    <string name="tax_draft">Предварительный налог на всю выручку %1$s ₽</string>
 </resources>
