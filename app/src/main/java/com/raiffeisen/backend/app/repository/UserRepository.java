@@ -1,11 +1,14 @@
 package com.raiffeisen.backend.app.repository;
 
 import com.zaxxer.hikari.HikariDataSource;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.exception.ExceptionUtils;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Slf4j
 public class UserRepository {
 
 
@@ -17,7 +20,6 @@ public class UserRepository {
     private final String GET_BALANCE_BY_ACCOUNT_ID = "select balance from account where user_id = ?";
 
 
-
     private final JdbcTemplate jdbcTemplate;
 
     public UserRepository(@Qualifier("postgre-db") final HikariDataSource dataSource) {
@@ -26,7 +28,12 @@ public class UserRepository {
 
 
     public Long getUserId(String username, String password) {
-        return jdbcTemplate.queryForObject(GET_USER_ID, new Object[]{username, password}, (rs, rowNum) -> rs.getLong("user_id"));
+        try {
+            return jdbcTemplate.queryForObject(GET_USER_ID, new Object[]{username, password}, (rs, rowNum) -> rs.getLong("user_id"));
+        } catch (Exception e) {
+            log.error(ExceptionUtils.getStackTrace(e));
+            return null;
+        }
     }
 
     public String getFullNameByUserId(Long userId) {
