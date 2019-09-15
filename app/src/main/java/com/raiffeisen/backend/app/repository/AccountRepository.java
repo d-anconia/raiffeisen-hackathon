@@ -17,6 +17,8 @@ public class AccountRepository {
 
     private final String GET_ACCOUNTS_OF_USER = "select * from account where user_id = ? and isforself = true";
 
+    private final String GET_ACCOUNT = "select * from account where user_id = ?";
+
     private final JdbcTemplate jdbcTemplate;
 
     public AccountRepository(@Qualifier("postgre-db") final HikariDataSource dataSource) {
@@ -26,6 +28,10 @@ public class AccountRepository {
 
     public Account getAccountsForSelfByUserId(Long userId) {
         return jdbcTemplate.queryForObject(GET_ACCOUNTS_OF_USER, new Object[]{userId}, getAccountRowMapper());
+    }
+
+    public Account getAccount(Long userId) {
+        return jdbcTemplate.queryForObject(GET_ACCOUNT, new Object[]{userId}, getAccountRowMapper());
     }
 
     private RowMapper<Account> getAccountRowMapper() {

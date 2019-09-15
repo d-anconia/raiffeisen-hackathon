@@ -35,8 +35,27 @@ public class TransactionService {
         List<Transaction> allTransactions = transactionRepository.getAllTransactions(accountsForSelf.getAccountId());
 
         return allTransactions.stream()
-                .peek(transaction -> transaction.setFromName(userRepository.getFullNameByUserId(userId)))
+                .peek(transaction -> {
+                    Account account = accountRepository.getAccount(transaction.getAccountFrom());
+                    transaction.setFromName(userRepository.getFullNameByUserId(account.getUserId()));
+                })
                 .collect(Collectors.toList());
+    }
+
+    public List<Transaction> getTransactionsInPeriod(Long userId, Long dateFrom, Long dateTo) {
+
+        Account accountsForSelf = accountRepository.getAccountsForSelfByUserId(userId);
+        List<Transaction> allTransactions = transactionRepository.getAllTransactions(accountsForSelf.getAccountId());
+
+
+        return allTransactions.stream()
+                .peek(transaction -> {
+                    Account account = accountRepository.getAccount(transaction.getAccountFrom());
+                    transaction.setFromName(userRepository.getFullNameByUserId(account.getUserId()));
+                })
+                .filter(transaction -> transaction.getDate() > dateFrom && transaction.getDate() < dateTo)
+                .collect(Collectors.toList());
+
     }
 
     @Transactional
@@ -50,7 +69,8 @@ public class TransactionService {
     }
 
     @Transactional
-    public void countTax(){
+    public void countTax(Long userFromId) {
+
 
     }
 

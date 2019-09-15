@@ -20,10 +20,16 @@ public class TransactionController {
         return transactionService.getAllTransactions(userid);
     }
 
+    @GetMapping("/transactionInPeriod")
+    public List<Transaction> getTransactionsInPeriod(@RequestParam("user_id") Long userid, @RequestParam("dateFrom") Long dateFrom, @RequestParam("dateTo")Long dateTo) {
+        return transactionService.getTransactionsInPeriod(userid, dateFrom, dateTo);
+    }
+
     @ResponseStatus(value = HttpStatus.OK)
     @PostMapping(value = "/saveTransaction")
     public @ResponseBody
     void saveTransaction(@RequestBody Transaction transaction) {
         transactionService.saveTransaction(transaction);
     }
+
 }

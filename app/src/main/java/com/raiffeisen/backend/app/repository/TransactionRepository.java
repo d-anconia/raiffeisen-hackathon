@@ -19,6 +19,8 @@ public class TransactionRepository {
 
     private final String GET_TRANSACTIONS = "select * from transactions where account_to = ?";
 
+    private final String GET_TRANSACTIONS_IN_PERIOD = "select * from transactions where account_to = ? and time_of_transaction >= ? and time_of_transaction <= ?";
+
     private final String SAVE_TRANSACTION_ISCASH = "insert into transactions(account_from, account_to, volume, time_of_transaction,iscash) values (?,?,?,?,?) ";
 
     private final JdbcTemplate jdbcTemplate;
