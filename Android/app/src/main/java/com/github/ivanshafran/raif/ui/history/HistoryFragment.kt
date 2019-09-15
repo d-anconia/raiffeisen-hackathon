@@ -11,6 +11,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.github.ivanshafran.raif.R
 import com.github.ivanshafran.raif.di.Scopes
+import com.github.ivanshafran.raif.ui.add_receipt.AddReceiptBottomDialogFragment
 import kotlinx.android.synthetic.main.fragment_history.*
 import toothpick.Toothpick
 
@@ -62,4 +63,8 @@ class HistoryFragment : MvpAppCompatFragment(), HistoryView {
         adapter.setTranscations(transcations)
     }
 
+    override fun openAddReceipt() {
+        val dialogFragment = AddReceiptBottomDialogFragment.newInstance()
+        dialogFragment.show(requireFragmentManager(), null)
+    }
 }

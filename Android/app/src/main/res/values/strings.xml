@@ -21,4 +21,9 @@
 
     <string name="online_money">Входящий перевод</string>
     <string name="cash_money">Наличный расчёт</string>
+
+    <string name="money_hint">Цена</string>
+    <string name="name_hint">Покупатель</string>
+    <string name="job_hint">Услуга</string>
+    <string name="create_button">Создать</string>
 </resources>

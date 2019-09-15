@@ -65,7 +65,6 @@
 
             </LinearLayout>
 
-
             <TextView
                 android:id="@+id/volumeTextView"
                 android:textColor="@android:color/black"

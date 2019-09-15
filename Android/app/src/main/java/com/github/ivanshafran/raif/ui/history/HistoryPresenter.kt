@@ -51,11 +51,11 @@ class HistoryPresenter @Inject constructor(
     }
 
     fun onAddReceiptClick() {
-
+        viewState.openAddReceipt()
     }
 
     override fun onDestroy() {
-        compositeDisposable?.dispose()
+        compositeDisposable.dispose()
     }
 
 }
