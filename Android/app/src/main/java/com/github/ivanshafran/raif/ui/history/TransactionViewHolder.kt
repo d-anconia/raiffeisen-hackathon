@@ -43,6 +43,19 @@ class TransactionInfoViewHolder(view: View) : TransactionViewHolder(view) {
             R.string.transaction_rub,
             transaction.volume.toString()
         )
+        volumeTextView.setTextColor(
+            context.resources.getColor(
+                if (transaction.isCash) {
+                    R.color.money_cash
+                } else {
+                    if (transaction.volume.intValueExact() >= 0) {
+                        R.color.money_online
+                    } else {
+                        R.color.money_minus
+                    }
+                }
+            )
+        )
         dateTextView.text = transaction.date
         typeImageView.setImageResource(
             if (transaction.isCash) {

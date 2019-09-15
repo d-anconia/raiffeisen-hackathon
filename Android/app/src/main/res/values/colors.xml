@@ -5,4 +5,8 @@
     <color name="colorAccent">#FFDB00</color>
     <color name="tabBackground">#DDDDDD</color>
     <color name="textColorSecondary">#C2C8CB</color>
+
+    <color name="money_minus">#000000</color>
+    <color name="money_cash">#438823</color>
+    <color name="money_online">#4EB100</color>
 </resources>
