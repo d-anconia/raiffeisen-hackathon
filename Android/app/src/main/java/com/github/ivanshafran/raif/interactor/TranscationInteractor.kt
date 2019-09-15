@@ -20,6 +20,7 @@ class TranscationInteractor @Inject constructor(
         } else {
             apiRepository
                 .getTransactions(userId)
+                .map { it.sortedBy { -it.date } }
         }
     }
 
