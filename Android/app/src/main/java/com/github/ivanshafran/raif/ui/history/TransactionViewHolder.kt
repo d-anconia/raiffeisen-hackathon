@@ -40,19 +40,23 @@ class TransactionInfoViewHolder(view: View) : TransactionViewHolder(view) {
         val context = fromNameTextView.context
         fromNameTextView.text = transaction.name
         volumeTextView.text = context.getString(
-            R.string.transaction_rub,
+            if (transaction.volume.toInt() >= 0) {
+                R.string.transaction_rub
+            } else {
+                R.string.transaction_rub_negative
+            },
             transaction.volume.toString()
         )
         volumeTextView.setTextColor(
             context.resources.getColor(
-                if (transaction.isCash) {
-                    R.color.money_cash
-                } else {
-                    if (transaction.volume.intValueExact() >= 0) {
-                        R.color.money_online
+                if (transaction.volume.intValueExact() >= 0) {
+                    if (transaction.isCash) {
+                        R.color.money_cash
                     } else {
-                        R.color.money_minus
+                        R.color.money_online
                     }
+                } else {
+                    R.color.money_minus
                 }
             )
         )
