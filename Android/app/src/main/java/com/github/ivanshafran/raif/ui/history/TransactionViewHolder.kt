@@ -49,7 +49,7 @@ class TransactionInfoViewHolder(view: View) : TransactionViewHolder(view) {
         )
         volumeTextView.setTextColor(
             context.resources.getColor(
-                if (transaction.volume.intValueExact() >= 0) {
+                if (transaction.volume.toFloat() >= 0) {
                     if (transaction.isCash) {
                         R.color.money_cash
                     } else {
