@@ -9,7 +9,9 @@ import com.arellomobile.mvp.MvpAppCompatFragment
 import com.arellomobile.mvp.presenter.InjectPresenter
 import com.arellomobile.mvp.presenter.ProvidePresenter
 import com.github.ivanshafran.raif.R
+import com.github.ivanshafran.raif.data.model.RevenueInfo
 import com.github.ivanshafran.raif.di.Scopes
+import kotlinx.android.synthetic.main.fragment_tax.*
 import toothpick.Toothpick
 
 class TaxFragment : MvpAppCompatFragment(), TaxView {
@@ -45,4 +47,14 @@ class TaxFragment : MvpAppCompatFragment(), TaxView {
 
     }
 
+    override fun showRevenue(info: RevenueInfo) {
+        taxValue.text = requireContext().getString(
+            R.string.rub,
+            info.taxValue
+        )
+        infoPayTextView.text = requireContext().getString(
+            R.string.pay_tax_info,
+            info.yearToDate
+        )
+    }
 }

@@ -12,11 +12,15 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
         android:layout_width="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_height="wrap_content" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:background="@android:color/white"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?selectableItemBackground"
         android:layout_height="120dp">
 
         <ImageView
@@ -64,7 +68,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ImageView
-        android:scaleType="fitCenter"
+        android:scaleType="fitXY"
         android:src="@drawable/ic_send_stub"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
