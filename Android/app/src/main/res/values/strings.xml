@@ -33,4 +33,7 @@
     <string name="year_money">Выручка за год</string>
     <string name="year_money_description">До %1$s</string>
     <string name="tax_draft">Предварительный налог на всю выручку %1$s ₽</string>
+    <string name="tax">Налоги</string>
+    <string name="pay_tax">Оплатить налог</string>
+    <string name="pay_tax_info">Необходимо оплатить налог\nдо %1$s</string>
 </resources>

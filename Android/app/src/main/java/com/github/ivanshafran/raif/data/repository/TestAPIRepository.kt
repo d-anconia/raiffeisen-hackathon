@@ -39,7 +39,11 @@ class TestAPIRepository : APIRepository {
         return Single.just(Account(balance = BigDecimal(13), cardName = "Wassa"))
     }
 
-    override fun getTransactionsByPeriod(from: Long, to: Long): Single<List<Transaction>> {
+    override fun getTransactionsByPeriod(
+        userId: String,
+        from: Long,
+        to: Long
+    ): Single<List<Transaction>> {
         return Single.just(
             listOf(
                 Transaction(

@@ -11,7 +11,7 @@ class DataModule : Module() {
 
     init {
         bind(APIRepository::class.java)
-            .toInstance(TestAPIRepository())
+            .toInstance(createApiRepository())
 
         bind(ExchangeRepository::class.java)
             .toInstance(createExchangeRepository())
